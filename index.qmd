@@ -1,0 +1,59 @@
+---
+title: "ggplot transparency"
+format: 
+  revealjs:
+    theme: [blood]
+execute:
+  echo: true
+---
+
+- I want my ggplot to have the same background colour as the slide background
+- I assumed that if the background is transparent and the device is PNG, this should work
+- I cannot seem to get this working how I would expect
+
+```{r}
+library(tidyverse)
+```
+
+## regular ggplot
+
+```{r}
+ggp <- ggplot(penguins,
+       aes(x = flipper_len,
+           y = bill_dep)) + 
+  geom_point()
+ggp
+```
+
+## theme minimal
+
+```{r}
+ggp + theme_minimal()
+```
+
+## background blank
+
+```{r}
+ggp + theme_minimal() + theme_sub_panel(background = element_blank())
+```
+
+## background paper transparent
+
+```{r}
+ggp + theme_minimal(paper = "transparent")
+```
+
+## sys info
+
+<details style="margin-bottom:10px;">
+
+<summary>
+
+Session info
+</summary>
+
+```{r}
+sessioninfo::session_info()
+```
+
+</details>
