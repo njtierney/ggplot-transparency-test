@@ -18,6 +18,7 @@ library(tidyverse)
 ## regular ggplot
 
 ```{r}
+#| label: regular-ggplot
 ggp <- ggplot(penguins,
        aes(x = flipper_len,
            y = bill_dep)) + 
@@ -28,20 +29,59 @@ ggp
 ## theme minimal
 
 ```{r}
+#| label: theme-minimal
 ggp + theme_minimal()
 ```
 
 ## background blank
 
 ```{r}
+#| label: theme-minimal-panel-blank
 ggp + theme_minimal() + theme_sub_panel(background = element_blank())
 ```
 
 ## background paper transparent
 
 ```{r}
+#| label: theme-minimal-paper-transparent
 ggp + theme_minimal(paper = "transparent")
 ```
+
+## mtcars
+
+```{r}
+#| label: regular-mtcars
+ggplot(mtcars, aes(x = hp, y = mpg)) + 
+    geom_point() + 
+    theme_minimal()
+```
+
+## mtcars transparent
+
+```{r}
+#| label: mtcars-paper-transparent
+ggplot(mtcars, aes(x = hp, y = mpg)) + 
+    geom_point() + 
+    theme_minimal(paper = "transparent")
+```
+
+## SO answer
+
+Adapted from <https://stackoverflow.com/questions/7455046/how-to-make-graphics-with-transparent-background-in-r-using-ggplot2>
+
+```{r}
+#| label: mtcars-so-example
+ggplot(mtcars, aes(x = hp, y = mpg)) + 
+    geom_point() + 
+    theme_sub_panel(
+        background = element_rect(fill = "transparent", colour = NA),
+        grid.major = element_line(colour = "grey")
+    ) + 
+    theme_sub_plot(
+        background = element_rect(fill = "transparent", colour = NA)
+    )
+```
+
 
 ## sys info
 

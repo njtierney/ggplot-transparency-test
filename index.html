@@ -219,28 +219,62 @@
 <span id="cb2-5"><a href=""></a>ggp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/regular-ggplot-1.png" width="960" class="r-stretch"></section>
 <section id="theme-minimal" class="slide level2">
 <h2>theme minimal</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>ggp <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/theme-minimal-1.png" width="960" class="r-stretch"></section>
 <section id="background-blank" class="slide level2">
 <h2>background blank</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>ggp <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">theme_sub_panel</span>(<span class="at">background =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/theme-minimal-panel-blank-1.png" width="960" class="r-stretch"></section>
 <section id="background-paper-transparent" class="slide level2">
 <h2>background paper transparent</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>ggp <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">paper =</span> <span class="st">"transparent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/theme-minimal-paper-transparent-1.png" width="960" class="r-stretch"></section>
+<section id="mtcars" class="slide level2">
+<h2>mtcars</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> hp, <span class="at">y =</span> mpg)) <span class="sc">+</span> </span>
+<span id="cb6-2"><a href=""></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb6-3"><a href=""></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/regular-mtcars-1.png" width="960" class="r-stretch"></section>
+<section id="mtcars-transparent" class="slide level2">
+<h2>mtcars transparent</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> hp, <span class="at">y =</span> mpg)) <span class="sc">+</span> </span>
+<span id="cb7-2"><a href=""></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb7-3"><a href=""></a>    <span class="fu">theme_minimal</span>(<span class="at">paper =</span> <span class="st">"transparent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/mtcars-paper-transparent-1.png" width="960" class="r-stretch"></section>
+<section id="so-answer" class="slide level2">
+<h2>SO answer</h2>
+<p>Adapted from <a href="https://stackoverflow.com/questions/7455046/how-to-make-graphics-with-transparent-background-in-r-using-ggplot2" class="uri">https://stackoverflow.com/questions/7455046/how-to-make-graphics-with-transparent-background-in-r-using-ggplot2</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> hp, <span class="at">y =</span> mpg)) <span class="sc">+</span> </span>
+<span id="cb8-2"><a href=""></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb8-3"><a href=""></a>    <span class="fu">theme_sub_panel</span>(</span>
+<span id="cb8-4"><a href=""></a>        <span class="at">background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"transparent"</span>, <span class="at">colour =</span> <span class="cn">NA</span>),</span>
+<span id="cb8-5"><a href=""></a>        <span class="at">grid.major =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"grey"</span>)</span>
+<span id="cb8-6"><a href=""></a>    ) <span class="sc">+</span> </span>
+<span id="cb8-7"><a href=""></a>    <span class="fu">theme_sub_plot</span>(</span>
+<span id="cb8-8"><a href=""></a>        <span class="at">background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"transparent"</span>, <span class="at">colour =</span> <span class="cn">NA</span>)</span>
+<span id="cb8-9"><a href=""></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/mtcars-so-example-1.png" width="960" class="r-stretch"></section>
 <section id="sys-info" class="slide level2">
 <h2>sys info</h2>
 <details style="margin-bottom:10px;">
@@ -248,7 +282,7 @@
 Session info
 </summary>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>sessioninfo<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>sessioninfo<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
  setting  value
